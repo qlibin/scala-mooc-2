@@ -14,10 +14,11 @@ object Polynomial {
                        delta: Signal[Double]): Signal[Set[Double]] = Signal {
     delta() match {
       case d if d < 0 => Set()
-      case d => Set(
-        (-b() + Math.sqrt(d)) / 2 * a(),
-        (-b() - Math.sqrt(d)) / 2 * a()
-      )
+      case d => val (aValue, bValue) = (a(), b())
+        Set(
+          (-bValue + Math.sqrt(d)) / (2 * aValue),
+          (-bValue - Math.sqrt(d)) / (2 * aValue)
+        )
     }
   }
 }
